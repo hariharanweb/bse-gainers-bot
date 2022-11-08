@@ -1,3 +1,7 @@
 import botAlerterService from './service/botAlerterService.js';
 
-botAlerterService.alertTopPerformers();
+const send = async () => {
+    const response = await botAlerterService.alertTopPerformers();
+    console.log(response)
+}
+send()
