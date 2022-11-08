@@ -1,5 +1,5 @@
-import bseService from './bseService';
-import telegramApi from '../api/telegramApi';
+import bseService from './bseService.js';
+import telegramApi from '../api/telegramApi.js';
 
 const alertTopPerformers = async () => {
   const topPerformers = await bseService.getTopPerformers();

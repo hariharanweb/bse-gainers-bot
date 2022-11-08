@@ -1,4 +1,4 @@
-import botAlerterService from "./src/service/botAlerterService";
+import botAlerterService from "./src/service/botAlerterService.js";
 
 export const handler = async () => {
     const botAlerterResponse = await botAlerterService.alertTopPerformers();

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import bseApi from '../api/bseApi';
+import bseApi from '../api/bseApi.js';
 
 const getTopPerformers = async (group = 'A') => {
   const topPerformers = await bseApi.getTopPerformers();
