@@ -7,7 +7,7 @@ const alertTopPerformers = async () => {
       .slice(0, 15)
       .map((entry) => `${entry.scripname} : ${entry.change_percent}% : ₹${entry.ltradert}\n`).join('%0A');
   const content=`BSE Gainers%0A-----------%0A${rows}`
-  await telegramApi.sendMessage(content);
+  return await telegramApi.sendMessage(content);
 };
 
 export default {
