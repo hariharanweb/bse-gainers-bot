@@ -1,13 +1,22 @@
 import _ from 'lodash';
 import bseApi from '../api/bseApi.js';
 
-const getTopPerformers = async (group = 'A') => {
-  const topPerformers = await bseApi.getTopPerformers();
+const checkThreshold = (entry, isTopPerformers) => (
+  isTopPerformers
+    ? entry.change_percent >= 1.95
+    : entry.change_percent <= -1.95
+);
+
+const getTopPerformersAndLosers = async (isTopPerformers = true) => {
+  const topPerformers = isTopPerformers
+    ? await bseApi.getTopPerformers() : await bseApi.getTopLosers();
   const filteredTopPerformers = topPerformers
-    .filter((entry) => entry.scrip_grp === group && entry.change_percent >= 1.95);
-  return _.sortBy(filteredTopPerformers, (entry) => entry.change_percent).reverse();
+    .filter((entry) => checkThreshold(entry, isTopPerformers));
+  return isTopPerformers
+    ? _.sortBy(filteredTopPerformers, (entry) => entry.change_percent).reverse()
+    : _.sortBy(filteredTopPerformers, (entry) => entry.change_percent);
 };
 
 export default {
-  getTopPerformers,
+  getTopPerformersAndLosers,
 };
