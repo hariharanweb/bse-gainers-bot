@@ -3,7 +3,7 @@ import botAlerterService from './src/service/botAlerterService.js';
 // eslint-disable-next-line import/prefer-default-export
 export const handler = async (event) => {
   const { operation } = event;
-
+  console.log(event);
   if (operation === 'echo') {
     return (event.payload);
   }
