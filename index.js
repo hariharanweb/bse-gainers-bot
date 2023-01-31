@@ -6,20 +6,24 @@ export const handler = async (event) => {
   if (event && event.queryStringParameters && event.queryStringParameters.operation) {
     operation = event.queryStringParameters.operation;
   }
-  console.log(event, operation);
+  console.log(operation);
   if (operation === 'echo') {
     return (event.payload);
   }
   switch (operation) {
     case 'gainers':
+      const gainers = await botAlerterService.getTopPerfomers(true);
+      console.log(gainers);
       return {
         statusCode: 200,
-        body: await botAlerterService.getTopPerfomers(true),
+        body: gainers,
       };
     case 'loosers':
+      const loosers = await botAlerterService.getTopPerfomers(false);
+      console.log(loosers);
       return {
         statusCode: 200,
-        body: await botAlerterService.getTopPerfomers(false),
+        body: loosers,
       };
     default:
       const botAlerterResponse1 = await botAlerterService.alertTopPerformersAndLosers();
