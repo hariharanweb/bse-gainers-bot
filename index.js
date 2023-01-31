@@ -6,7 +6,7 @@ export const handler = async (event) => {
   if (event && event.queryStringParameters && event.queryStringParameters.operation) {
     operation = event.queryStringParameters.operation;
   }
-  console.log(operation);
+  console.log(event, operation);
   if (operation === 'echo') {
     return (event.payload);
   }
