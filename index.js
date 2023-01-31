@@ -11,15 +11,9 @@ export const handler = async (event) => {
   }
   switch (operation) {
     case 'gainers':
-      return {
-        statusCode: 200,
-        body: await botAlerterService.getTopPerfomers(true),
-      };
+      return botAlerterService.getTopPerfomers(true);
     case 'loosers':
-      return {
-        statusCode: 200,
-        body: await botAlerterService.getTopPerfomers(false),
-      };
+      return botAlerterService.getTopPerfomers(false);
     default:
       const botAlerterResponse1 = await botAlerterService.alertTopPerformersAndLosers();
       const botAlerterResponse2 = await botAlerterService.alertTopPerformersAndLosers(false);
