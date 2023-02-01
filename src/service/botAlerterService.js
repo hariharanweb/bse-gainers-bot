@@ -5,7 +5,7 @@ const alertTopPerformersAndLosers = async (isTopPerformers = true) => {
   const topPerformers = await bseService.getTopPerformersAndLosers(isTopPerformers);
   let rows = topPerformers
     .slice(0, 30)
-    .map((entry) => `<a href="${entry.URL}">${entry.scripname}</a> : ${entry.change_percent}% : ₹${entry.ltradert}\n`)
+    .map((entry) => `<a href="${entry.URL}">${entry.scripname}</a> : ${entry.change_percent}% : ₹${entry.ltradert}  <a href="https://news.google.com/search?q=${entry.scripname}%20share">📰</a>\n`)
     .join('%0A');
   rows = rows.replace('&', ' ');
   const header = isTopPerformers ? 'BSE Gainers' : 'BSE Looser';
