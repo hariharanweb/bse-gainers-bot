@@ -3,11 +3,14 @@ import telegramApi from '../api/telegramApi.js';
 
 const alertTopPerformersAndLosers = async (isTopPerformers = true) => {
   const topPerformers = await bseService.getTopPerformersAndLosers(isTopPerformers);
-  let rows = topPerformers
+  const rows = topPerformers
     .slice(0, 30)
-    .map((entry) => `<a href="${entry.URL}">${entry.scripname}</a> : ${entry.change_percent}% : ₹${entry.ltradert}  <a href="https://news.google.com/search?q=${entry.scripname}%20share">📰</a>\n`)
+    .map((entry) => {
+      const scripname = entry.scripname.replace('&', ' ');
+      return `<a href="${entry.URL}">${scripname}</a> : ${entry.change_percent}% : ₹${entry.ltradert}  <a href="https://news.google.com/search?q=${scripname}%20share">📰</a>\n`;
+    })
     .join('%0A');
-  rows = rows.replace('&', ' ');
+
   const header = isTopPerformers ? 'BSE Gainers' : 'BSE Looser';
   const content = `${header}%0A-------------%0A${rows}%0A-------------%0A<a href="https://11akvs64nj.execute-api.ap-south-1.amazonaws.com/default/BseGainersBot"><b>Get Current</b></a>`;
   const response = await telegramApi.sendMessage(content);
