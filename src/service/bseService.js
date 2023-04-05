@@ -3,8 +3,8 @@ import bseApi from '../api/bseApi.js';
 
 const checkThreshold = (entry, isTopPerformers) => (
   isTopPerformers
-    ? entry.change_percent >= 1.95
-    : entry.change_percent <= -1.95
+    ? entry.change_percent >= 1.5
+    : entry.change_percent <= -0.6
 );
 
 const getTopPerformersAndLosers = async (isTopPerformers = true) => {

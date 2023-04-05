@@ -4,10 +4,10 @@ import telegramApi from '../api/telegramApi.js';
 const alertTopPerformersAndLosers = async (isTopPerformers = true) => {
   const topPerformers = await bseService.getTopPerformersAndLosers(isTopPerformers);
   const rows = topPerformers
-    .slice(0, 30)
+    .slice(0, 40)
     .map((entry) => {
       const scripname = entry.scripname.replace('&', ' ');
-      return `<a href="${entry.URL}">${scripname}</a> : ${entry.change_percent}% : ₹${entry.ltradert}  <a href="https://news.google.com/search?q=${scripname}%20share">📰</a>\n`;
+      return `<a href="${entry.URL}">${scripname}</a> : ${entry.change_percent}% : ₹${entry.ltradert}  <a href="https://www.google.com/finance/quote/${scripname}:NSE">📰</a>\n`;
     })
     .join('%0A');
 
