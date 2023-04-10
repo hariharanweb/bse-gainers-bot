@@ -10,7 +10,7 @@ const alertTopPerformersAndLosers = async (isTopPerformers = true) => {
   const topPerformers = await bseService.getTopPerformersAndLosers(isTopPerformers);
   const rows = topPerformers
     .gainersAndLoosers
-    .slice(0, 40)
+    .slice(0, 25)
     .map(getMessage)
     .join('%0A');
 

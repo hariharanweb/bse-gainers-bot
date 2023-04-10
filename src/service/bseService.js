@@ -5,7 +5,7 @@ import interestingStocks from './interestingStocks.js';
 const checkThreshold = (entry, isTopPerformers) => (
   isTopPerformers
     ? entry.change_percent >= 1.5
-    : entry.change_percent <= -0.6
+    : entry.change_percent <= -1
 );
 
 const getTopPerformersAndLosers = async (isTopPerformers = true) => {
