@@ -11,7 +11,7 @@ const interestingStocks = [
   'SBIN',
 ];
 
-const isInterestingStock = (entry) => interestingStocks.indexOf(entry.scripname) > 0;
+const isInterestingStock = (entry) => interestingStocks.indexOf(entry.scripname) >= 0;
 
 export default {
   isInterestingStock,
