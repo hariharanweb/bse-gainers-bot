@@ -9,6 +9,7 @@ const interestingStocks = [
   'TATAMOTORS',
   'INDUSINDBK',
   'SBIN',
+  'RELIANCE',
 ];
 
 const isInterestingStock = (entry) => interestingStocks.indexOf(entry.scripname) >= 0;
