@@ -10,6 +10,14 @@ const interestingStocks = [
   'INDUSINDBK',
   'SBIN',
   'RELIANCE',
+  'CIPLA',
+  'CANBK',
+  'DRREDDY',
+  'KOTAKBANK',
+  'TATAMTRDVR',
+  'TVSMOTOR',
+  'YESBANK',
+  'SOUTHBANK',
 ];
 
 const isInterestingStock = (entry) => interestingStocks.indexOf(entry.scripname) >= 0;
