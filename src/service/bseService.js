@@ -9,7 +9,8 @@ const checkThreshold = (entry, isTopPerformers) => (
 );
 
 const getTopPerformersAndLosers = async (isTopPerformers = true) => {
-  const topPerformers = await bseApi.getTopPerformersAndLoosers(isTopPerformers);
+  const performers = await bseApi.getTopPerformersAndLoosers(isTopPerformers);
+  const topPerformers = performers.filter((item) => item.scrip_grp === 'A');
   const filteredTopPerformers = topPerformers
     .filter((entry) => checkThreshold(entry, isTopPerformers));
   const result = isTopPerformers
