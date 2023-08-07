@@ -1,11 +1,19 @@
 import fetch from 'node-fetch';
 
-const getTopPerformersAndLoosers = async (isTopPerformer) => {
-  const type = isTopPerformer ? 'gainers' : 'loosers';
-  const response = await fetch(`https://www.nseindia.com/api/live-analysis-variations?index=${type}`);
-  return response.json();
-};
+export default class NseApi {
+  constructor() {
+    this.url = 'https://www.nseindia.com/api/live-analysis-variations';
+  }
 
-export default {
-  getTopPerformersAndLoosers,
-};
+  async getTopPerformersAndLooser(isTopPerformer) {
+    try {
+      const type = isTopPerformer ? 'gainers' : 'loosers';
+      const response = await fetch(`${this.url}?index=${type}`);
+      console.log('Bpooooom',response);
+      return response.json();
+    } catch (error) {
+      console.err(error);
+      return error;
+    }
+  }
+}
