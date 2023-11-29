@@ -18,6 +18,9 @@ const interestingStocks = [
   'TVSMOTOR',
   'YESBANK',
   'SOUTHBANK',
+  'ARE&M',
+  'JIOFIN',
+  'NATCOPHARM'
 ];
 
 const isInterestingStock = (entry) => interestingStocks.indexOf(entry.scripname) >= 0;
