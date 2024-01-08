@@ -11,7 +11,7 @@ app.use((_, res, next) => {
   next();
 });
 
-app.get('/', async (_, res) => {
+app.get('/alert', async (_, res) => {
   const botAlerterResponse1 = await botAlerterService.alertTopPerformersAndLosers();
   const botAlerterResponse2 = await botAlerterService.alertTopPerformersAndLosers(false);
   res.send(
