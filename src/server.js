@@ -11,6 +11,12 @@ app.use((_, res, next) => {
   next();
 });
 
+app.get('/alert', async (req, res) => {
+  res.send(
+    `Sent at ${new Date()} ${JSON.stringify(req)}`,
+  );
+})
+
 app.get('/alert', async (_, res) => {
   const botAlerterResponse1 = await botAlerterService.alertTopPerformersAndLosers();
   const botAlerterResponse2 = await botAlerterService.alertTopPerformersAndLosers(false);
