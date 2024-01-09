@@ -3,6 +3,8 @@ import bseService from './service/bseService.js';
 import botAlerterService from './service/botAlerterService.js';
 
 const app = express();
+
+console.log('ENV', process.env.ENVIRONMENT)
 if(process.env.ENVIRONMENT != "lambda"){
   const port = process.env.PORT || 3000;
   app.listen(port, () => console.log(`Server is listening on port ${port}.`));
@@ -13,7 +15,7 @@ app.use((_, res, next) => {
   next();
 });
 
-app.get('/alert', async (req, res) => {
+app.get('/', async (req, res) => {
   res.send(
     `Sent at ${new Date()} ${JSON.stringify(req)}`,
   );
