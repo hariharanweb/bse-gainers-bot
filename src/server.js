@@ -3,8 +3,10 @@ import bseService from './service/bseService.js';
 import botAlerterService from './service/botAlerterService.js';
 
 const app = express();
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server is listening on port ${port}.`));
+if(process.env.ENVIRONMENT != "lambda"){
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => console.log(`Server is listening on port ${port}.`));
+} 
 
 app.use((_, res, next) => {
   res.setHeader('Content-Type', 'application/json');

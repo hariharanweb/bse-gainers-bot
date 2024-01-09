@@ -1,10 +1,19 @@
-import serverless from 'serverless-http';
+import awsServerlessExpress from 'aws-serverless-express';
 import server from './src/server.js';
 
-const serverlessHandler = serverless(server);
+const awsServerlessExpress = require("aws-serverless-express")
+const app = require("./app");
 
-// eslint-disable-next-line import/prefer-default-export
-export const handler = (event, context, callback) => {
-  const response = serverlessHandler(event, context, callback);
-  return response;
-};
+const binaryMimeTypes = [
+  "application/octet-stream",
+  "font/eot",
+  "font/opentype",
+  "font/otf",
+  "image/jpeg",
+  "image/png",
+  "image/svg+xml",
+];
+
+const server = awsServerlessExpress.createServer(app, null, binaryMimeTypes);
+
+exports.handler = (event, context) => awsServerlessExpress.proxy(server, event, context);
