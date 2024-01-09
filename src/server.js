@@ -12,18 +12,13 @@ app.use((_, res, next) => {
 });
 
 app.get('/', async (req, res) => {
-  res.send(
-    {data : `Sent at ${new Date()} to path ${req.path}`}
-  );
-})
-
-app.get('/alert', async (_, res) => {
   const botAlerterResponse1 = await botAlerterService.alertTopPerformersAndLosers();
   const botAlerterResponse2 = await botAlerterService.alertTopPerformersAndLosers(false);
   res.send(
     {data :`Sent at ${new Date()} with Response ${botAlerterResponse1} ${botAlerterResponse2}`},
   );
-});
+})
+
 app.get('/market', async (_, res) => {
   const topPerformers = await bseService.getTopPerformersAndLosers(true);
   res.send(topPerformers);
