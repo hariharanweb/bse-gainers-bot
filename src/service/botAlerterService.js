@@ -20,7 +20,7 @@ const alertTopPerformersAndLosers = async (isTopPerformers = true) => {
     .join('%0A');
 
   const header = isTopPerformers ? 'BSE Gainers' : 'BSE Looser';
-  const content = `${header}%0A-------------%0A${rows}%0A---INTERESTING---%0A${interesting}%0A--------------------%0A<a href="https://11akvs64nj.execute-api.ap-south-1.amazonaws.com/default/BseGainersBot"><b>Get Current</b></a>`;
+  const content = `${header}%0A-------------%0A${rows}%0A---INTERESTING---%0A${interesting}%0A--------------------%0A<a href="https://k385gahq48.execute-api.ap-south-1.amazonaws.com/dev"><b>Get Current</b></a>`;
   const response = await telegramApi.sendMessage(content);
   return response.statusText;
 };
