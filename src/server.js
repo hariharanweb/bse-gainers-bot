@@ -4,6 +4,7 @@ import botAlerterService from './service/botAlerterService.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
+// eslint-disable-next-line no-console
 app.listen(port, () => console.log(`Server is listening on port ${port}.`));
 
 app.use((_, res, next) => {
@@ -15,12 +16,13 @@ app.get('/', async (req, res) => {
   const botAlerterResponse1 = await botAlerterService.alertTopPerformersAndLosers();
   const botAlerterResponse2 = await botAlerterService.alertTopPerformersAndLosers(false);
   res.send(
-    {data :`Sent at ${new Date()} with Response ${botAlerterResponse1} ${botAlerterResponse2}`},
+    { data: `Sent at ${new Date()} with Response ${botAlerterResponse1} ${botAlerterResponse2}` },
   );
-})
+});
 
-app.get('/market', async (_, res) => {
-  const topPerformers = await bseService.getTopPerformersAndLosers(true);
+app.get('/market', async (req, res) => {
+  const type = req.query.type !== 'loosers';
+  const topPerformers = await bseService.getTopPerformersAndLosers(type);
   res.send(topPerformers);
 });
 
