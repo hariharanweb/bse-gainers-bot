@@ -13,8 +13,8 @@ app.use((_, res, next) => {
 });
 
 app.get('/', async (req, res) => {
-  const botAlerterResponse1 = await botAlerterService.alertTopPerformersAndLosers();
   const botAlerterResponse2 = await botAlerterService.alertTopPerformersAndLosers(false);
+  const botAlerterResponse1 = await botAlerterService.alertTopPerformersAndLosers();  
   res.send(
     { data: `Sent at ${new Date()} with Response ${botAlerterResponse1} ${botAlerterResponse2}` },
   );
