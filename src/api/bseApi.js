@@ -5,7 +5,7 @@ const getTopPerformersAndLoosers = async (isTopPerformer) => {
   try {
     const response = await fetch(`https://api.bseindia.com/BseIndiaAPI/api/MktRGainerLoserDataeqto/w?GLtype=${type}&IndxGrp=group&IndxGrpval=A&orderby=all`, {
       headers: {
-        referer: 'https://www.bseindia.com/',
+        'REFERER':'https://www.bseindia.com/',
       },
     });
     const data = await response.json();
