@@ -16,6 +16,7 @@ const getTopPerformersAndLoosers = async (isTopPerformer) => {
         'REFERER':'https://www.bseindia.com/',
       },
     });
+    console.log('**** End the API *****', response);
     const data = await response.json();
     if(data.Table){
       return data.Table;  
