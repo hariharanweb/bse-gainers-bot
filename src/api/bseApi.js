@@ -9,6 +9,7 @@ const agent = new https.Agent({
 const getTopPerformersAndLoosers = async (isTopPerformer) => {
   const type = isTopPerformer ? 'gainer' : 'loser';
   try {
+    console.log('**** Calling the API *****');
     const response = await fetch(`https://api.bseindia.com/BseIndiaAPI/api/MktRGainerLoserDataeqto/w?GLtype=${type}&IndxGrp=group&IndxGrpval=A&orderby=all`, {
       agent,
       headers: {
@@ -23,6 +24,7 @@ const getTopPerformersAndLoosers = async (isTopPerformer) => {
       throw Exception(`API errored for ${isTopPerformer}`)
     }    
   } catch (error) {
+    console.log('**** Err in the API *****');
     console.error(error);
     throw error;  
   }  
