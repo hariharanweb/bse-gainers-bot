@@ -10,12 +10,18 @@ const getTopPerformersAndLoosers = async (isTopPerformer) => {
   const type = isTopPerformer ? 'gainer' : 'loser';
   try {
     console.log('**** Calling the API *****');
-    const response = await fetch(`https://api.bseindia.com/BseIndiaAPI/api/MktRGainerLoserDataeqto/w?GLtype=${type}&IndxGrp=group&IndxGrpval=A&orderby=all`, {
-      headers: {
-        'referer':'https://www.bseindia.com/',
-      },
-    });
-    console.log('**** End the API *****', response);
+    try {
+      const response = await fetch(`https://api.bseindia.com/BseIndiaAPI/api/MktRGainerLoserDataeqto/w?GLtype=${type}&IndxGrp=group&IndxGrpval=A&orderby=all`, {
+        headers: {
+          'referer':'https://www.bseindia.com/',
+        },
+      });
+      console.log('**** End the API *****', response);
+    } catch (error) {
+      console.log('Its a error')
+      console.log(error)
+    }
+    
     const data = await response.json();
     if(data.Table){
       return data.Table;  
