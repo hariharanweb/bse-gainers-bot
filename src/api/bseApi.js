@@ -8,7 +8,7 @@ const getTopPerformersAndLoosers = async (isTopPerformer) => {
       `https://api.bseindia.com/BseIndiaAPI/api/MktRGainerLoserDataeqto/w?GLtype=${type}&IndxGrp=group&IndxGrpval=A&orderby=all`,
       { 'headers': { 'referer': 'https://www.bseindia.com/' } }
     )
-    console.log('Response ', response);
+    console.log('Response ', response.status);
     const data = response.data;
     if (data.Table) {
       return data.Table;
